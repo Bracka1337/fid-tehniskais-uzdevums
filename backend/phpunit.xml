@@ -31,5 +31,7 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="DOCUMENTS_VALIDATE_SCHEMA" value="true"/>
+        <env name="SANCTUM_STATEFUL_DOMAINS" value="localhost,localhost:8080,127.0.0.1,127.0.0.1:8080"/>
+        <env name="SESSION_DOMAIN" value="localhost"/>
     </php>
 </phpunit>
