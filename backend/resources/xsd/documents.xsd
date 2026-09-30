@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="ImportanceLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="low"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="high"/>
+            <xs:enumeration value="critical"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AccessCategory">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="public"/>
+            <xs:enumeration value="internal"/>
+            <xs:enumeration value="restricted"/>
+            <xs:enumeration value="confidential"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ActiveStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="documents">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="document" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="external_id" type="xs:string"/>
+                            <xs:element name="title" type="xs:string"/>
+                            <xs:element name="description" type="xs:string"/>
+                            <xs:element name="responsible_unit" type="xs:string"/>
+                            <xs:element name="created_on" type="xs:date"/>
+                            <xs:element name="url" type="xs:anyURI"/>
+                            <xs:element name="file_type" type="xs:string"/>
+                            <xs:element name="reading_time_minutes" type="xs:positiveInteger"/>
+                            <xs:element name="importance" type="ImportanceLevel"/>
+                            <xs:element name="category" type="AccessCategory"/>
+                            <xs:element name="is_active" type="ActiveStatus"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
