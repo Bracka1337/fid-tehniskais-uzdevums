@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "variables" as *;
 
 *,
@@ -6,25 +7,120 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: $font-sans;
-  color: $color-text;
-  background: $color-bg;
+html,
+body,
+#root {
+  min-height: 100%;
 }
 
-.app {
-  max-width: 40rem;
-  margin: 4rem auto;
-  padding: 0 1.5rem;
+body {
+  margin: 0;
+  font-family: $font-body;
+}
 
-  h1 {
-    margin: 0 0 0.5rem;
-    font-size: 1.75rem;
+button,
+input,
+select {
+  font: inherit;
+}
+
+a {
+  color: $honey-bronze;
+
+  &:hover {
+    color: color.adjust($honey-bronze, $lightness: -8%);
+  }
+}
+
+.boot {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  color: $dim-grey;
+  letter-spacing: 0.04em;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: $radius;
+  padding: 0.7rem 1.15rem;
+  cursor: pointer;
+  background: $metallic-gold;
+  color: $shadow-grey;
+  font-weight: 600;
+  transition: transform $transition, box-shadow $transition, background-color $transition;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: $honey-bronze;
+    box-shadow: 0 8px 18px rgba($shadow-grey, 0.18);
   }
 
-  p {
-    margin: 0;
-    color: $color-muted;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $shadow-grey;
+    border: 1px solid rgba($dim-grey, 0.35);
+
+    &:hover:not(:disabled) {
+      background: rgba($shadow-grey, 0.05);
+      box-shadow: none;
+    }
+  }
+
+  &--danger {
+    background: #a63d3d;
+    color: #fff;
+
+    &:hover:not(:disabled) {
+      background: #8f3434;
+      box-shadow: 0 8px 18px rgba(#a63d3d, 0.28);
+    }
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  label {
+    font-size: 0.85rem;
+    color: $dim-grey;
+    font-weight: 500;
+  }
+
+  input,
+  select {
+    border: 1px solid rgba($dim-grey, 0.35);
+    border-radius: $radius;
+    background: rgba(#fff, 0.72);
+    color: $shadow-grey;
+    padding: 0.65rem 0.75rem;
+    transition: border-color $transition, box-shadow $transition;
+
+    &:focus {
+      outline: none;
+      border-color: $honey-bronze;
+      box-shadow: 0 0 0 3px rgba($metallic-gold, 0.28);
+    }
+  }
+}
+
+.status {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: $radius;
+  background: rgba($dim-grey, 0.12);
+  color: $shadow-grey;
+
+  &--error {
+    background: rgba(#8b3a3a, 0.12);
+    color: #6f2d2d;
   }
 }

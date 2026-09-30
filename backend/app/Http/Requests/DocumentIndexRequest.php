@@ -28,13 +28,7 @@ class DocumentIndexRequest extends FormRequest
                 Rule::in([
                     'title',
                     'created_on',
-                    'importance',
-                    'category',
                     'reading_time_minutes',
-                    'responsible_unit',
-                    'file_type',
-                    'is_active',
-                    'external_id',
                 ]),
             ],
             'direction' => ['sometimes', 'nullable', 'string', Rule::in(['asc', 'desc'])],
