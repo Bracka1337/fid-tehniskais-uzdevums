@@ -23,22 +23,8 @@ services:
       context: ./backend
     volumes:
       - sqlite_data:/data
-    environment:
-      APP_NAME: "Document Catalog"
-      APP_ENV: local
-      APP_KEY: ${APP_KEY:-base64:jxiTtY8rV1AhGgVTib899jj05PAwUDKUEHf8unSgiEI=}
-      APP_DEBUG: "true"
-      APP_URL: http://localhost:8080
-      LOG_CHANNEL: stderr
-      DB_CONNECTION: sqlite
-      DB_DATABASE: /data/database.sqlite
-      SESSION_DRIVER: cookie
-      SESSION_DOMAIN: localhost
-      SESSION_SECURE_COOKIE: "false"
-      CACHE_STORE: file
-      QUEUE_CONNECTION: sync
-      SANCTUM_STATEFUL_DOMAINS: localhost,localhost:8080,127.0.0.1,127.0.0.1:8080
-      DOCUMENTS_REMOTE_URL: http://nginx/remote/documents.xml
+    env_file:
+      - .env
     healthcheck:
       test: ["CMD-SHELL", "php -r \"exit(file_exists('/data/database.sqlite') ? 0 : 1);\""]
       interval: 10s
