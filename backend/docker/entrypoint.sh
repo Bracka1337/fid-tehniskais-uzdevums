@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+mkdir -p /data
+if [ ! -f /data/database.sqlite ]; then
+  touch /data/database.sqlite
+fi
+chown -R www-data:www-data /data
+
+cd /var/www/html
+
+mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache storage/app/remote
+chown -R www-data:www-data storage bootstrap/cache
+
+php artisan migrate --force --no-interaction
+php artisan db:seed --force --no-interaction || true
+
+if [ ! -f storage/app/remote/documents.xml ]; then
+  php artisan documents:generate-sample --count=25 --no-interaction 2>/dev/null || true
+fi
+
+php artisan documents:sync --local --no-interaction 2>/dev/null || true
+
+exec php-fpm -F
