@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documents>
+  <document>
+    <external_id>DOC-TEST-001</external_id>
+    <title>Test Document One</title>
+    <description>First fixture document</description>
+    <responsible_unit>IT departaments</responsible_unit>
+    <created_on>2024-01-15</created_on>
+    <url>https://example.com/documents/001.pdf</url>
+    <file_type>pdf</file_type>
+    <reading_time_minutes>12</reading_time_minutes>
+    <importance>high</importance>
+    <category>public</category>
+    <is_active>true</is_active>
+  </document>
+  <document>
+    <external_id>DOC-TEST-002</external_id>
+    <title>Test Document Two</title>
+    <description>Second fixture document</description>
+    <responsible_unit>Juridiskais dienests</responsible_unit>
+    <created_on>2024-06-01</created_on>
+    <url>https://example.com/documents/002.docx</url>
+    <file_type>docx</file_type>
+    <reading_time_minutes>25</reading_time_minutes>
+    <importance>medium</importance>
+    <category>internal</category>
+    <is_active>true</is_active>
+  </document>
+  <document>
+    <external_id>DOC-TEST-003</external_id>
+    <title>Test Document Three</title>
+    <description>Third fixture document</description>
+    <responsible_unit>Finanšu nodaļa</responsible_unit>
+    <created_on>2025-03-20</created_on>
+    <url>https://example.com/documents/003.pdf</url>
+    <file_type>pdf</file_type>
+    <reading_time_minutes>8</reading_time_minutes>
+    <importance>low</importance>
+    <category>restricted</category>
+    <is_active>false</is_active>
+  </document>
+</documents>
